@@ -2,6 +2,12 @@ import React, {Component, PropTypes} from 'react';
 import { Router, Route, Redirect, IndexRoute, browserHistory, hashHistory } from 'react-router';
 
 import index from '../Component/index'; //销售录入
+// import chooseProducts from '../Component/chooseProducts'; 
+// import helpCenter from '../Component/helpCenter'; 
+// import saleRecord from '../Component/saleRecord'; 
+// import allDeposit from '../Component/allDeposit';
+// import applyRecord from '../Component/applyRecord'; 
+// import applyDeposit from '../Component/applyDeposit';  
 
 class Roots extends Component {
     render() {
