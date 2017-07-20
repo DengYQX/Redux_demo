@@ -14,6 +14,7 @@ import './Style/saleRecord.less';
 import './Style/allDeposit.less';
 import './Style/applyDeposit.less';
 import './Style/applyRecord.less';
+import './Style/demo.less';
 
 
 store.subscribe(() => { //监听state变化

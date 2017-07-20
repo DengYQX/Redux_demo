@@ -19,13 +19,12 @@ var proxy = [{ //测试环境demo地址
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: {
-        app: APP_FILE
+        app: ['babel-polyfill', APP_FILE]
     },
     output: {
         publicPath: '/dist/', //编译好的文件，在服务器的路径,这是静态资源引用路径
         path: BUILD_PATH, //编译到当前目录
-        filename: '[name].js', //编译后的文件名字
-        chunkFilename: '[name].[chunkhash:5].min.js' //输出相应模块名字
+        filename: '[name].js' //编译后的文件名字
     },
     module: {
         loaders: [{
