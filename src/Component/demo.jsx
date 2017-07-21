@@ -1,14 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import {Header} from './common/mixin';
+import { connect } from 'dva'
 
 class demo extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+        list: []
+    }
   }
   componentDidMount() {
-
+    const params = {
+        page:1,
+        type:'UNAUDIT'
+    };
+    this.props.requerData({...params});
   }
   render() {
+    console.log(this.props.data); //实际获得的数据
     return (
       <div className="component_container index_module">
           <Header goback title='个人征信'/>
@@ -53,5 +62,21 @@ class demo extends Component {
     )
   }
 }
+function mapStateToProps(state, ownProps) {
+  return {
+    data: state.demo.data,
+    loading: !!state.loading.models.demo
+  }
+}
 
-export default demo;
+function dispatchToProps(dispatch) {
+  return {
+    requerData(payload = {}) {
+      dispatch({
+        type: 'demo/queryList',
+        payload
+      })
+    }
+  }
+}
+export default connect(mapStateToProps, dispatchToProps)(demo);

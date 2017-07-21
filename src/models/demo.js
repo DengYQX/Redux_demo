@@ -1,5 +1,5 @@
 import qs from 'qs';
-import Home from '../api/home';
+import {demo} from '../api/demo';
 
 
 export default {
@@ -21,16 +21,15 @@ export default {
     }
   },
   effects: {
-    * queryList({ payload: { params } }, { call, put }) {
-      //console.log(home.query(), "asdasd");
-      const { jsonResult } = yield call(Home.query, { params });
+    * queryList({ payload: { page, type } }, { call, put }) {
+      
+      const { jsonResult } = yield call(demo, { page, type });
     //  const { jsonResult } = yield call(get('/km-service/testEchartsObject.json'));
       yield put({
         type: 'queryListSuccess',
         payload: {
           data: jsonResult.data,
-          message: jsonResult.message,
-          title: jsonResult.title
+          success: jsonResult.http_code
         }
       });
     },
@@ -47,7 +46,7 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
-        if (pathname === '/home') {
+        if (pathname === '/demo') {
           dispatch({ type: 'fetch', payload: query });
         }
       });

@@ -30,6 +30,7 @@ app.use(createLoading());
 
 // 3. Model
 Object.keys(Models).forEach( item => {
+  //  console.log(Models[item].default);
     app.model(Models[item].default);
 })
 //app.model(Demo);

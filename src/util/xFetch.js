@@ -25,9 +25,10 @@ function errorMessageParse(res) {
   const {
     success,
     successful,
-    msg
+    msg,
+    http_code
   } = res.jsonResult;
-  if (!success && !successful) {
+  if (!success && !successful && http_code !== 200) {
     // Message.error( msg);
     return Promise.reject(msg || '系统发生错误，未返回错误信息。');
   }
